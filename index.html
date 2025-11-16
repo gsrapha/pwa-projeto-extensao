@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>BlackAccess</title>
+
+    <!-- Tailwind CSS -->
+    <script src="./js/libs/tailwind.js"></script>
+
+    <!-- Fonte Rubik -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- Manifest PWA -->
+    <link rel="manifest" href="manifest.webmanifest" />
+
+    <!-- Ícone -->
+    <link rel="icon" href="icons/icon-192.png" />
+
+    <meta name="theme-color" content="#000000" />
+  </head>
+
+  <body class="min-h-screen bg-black text-white overflow-x-hidden font-[Rubik]">
+
+    <!-- Skip link - Acessibilidade -->
+    <a
+      href="#conteudo-principal"
+      class="sr-only focus:not-sr-only focus:absolute focus:top-3 focus:left-3 bg-yellow-400 text-black px-4 py-2 rounded-lg shadow"
+    >
+      Ir para o conteúdo principal
+    </a>
+
+    <!-- Cabeçalho -->
+    <header class="max-w-5xl mx-auto px-4 py-6 border-b border-yellow-600/30 flex justify-center">
+      <img 
+        src="icons/logo-blackaccess.png" 
+        alt="Logo BlackAccess" 
+        class="h-16 md:h-24 lg:h-28 w-auto transition-all duration-300"
+      />
+    </header>
+
+    <!-- APP -->
+    <main id="app" class="max-w-5xl mx-auto px-4 sm:px-6 pb-24">
+
+      <!-- BOTÃO MENU MOBILE -->
+      <button
+        @click="abrirMenu"
+        class="md:hidden bg-yellow-500 text-black px-4 py-2 rounded shadow mt-4 hover:bg-yellow-400 
+               transition-all duration-300 ease-out 
+               focus:ring-2 focus:ring-yellow-500 focus:ring-offset-2 focus:ring-offset-black"
+      >
+        ☰ Menu
+      </button>
+
+      <!-- MENU LATERAL -->
+      <div
+        v-if="menuAberto"
+        class="fixed inset-0 bg-black/70 backdrop-blur-sm flex z-50"
+        @click.self="fecharMenu"
+      >
+        <nav class="w-64 bg-zinc-900 p-6 flex flex-col gap-4 border-r border-yellow-600/20">
+
+          <button 
+            ref="btnFecharMenu"
+            class="text-gray-300 hover:text-white transition-all duration-300 ease-out
+                   focus:ring-2 focus:ring-yellow-500 focus:ring-offset-2 focus:ring-offset-zinc-900"
+            @click="fecharMenu"
+          >
+            ✕ Fechar
+          </button>
+
+          <a href="#inicio" class="text-white hover:text-yellow-400 transition-all duration-300 ease-out
+                    focus:ring-2 focus:ring-yellow-500 focus:ring-offset-2 focus:ring-offset-zinc-900"
+                @click="fecharMenu">Início</a>
+
+          <a href="#produtos" class="text-white hover:text-yellow-400 transition-all duration-300 ease-out
+                    focus:ring-2 focus:ring-yellow-500 focus:ring-offset-2 focus:ring-offset-zinc-900"
+                @click="fecharMenu">Produtos</a>
+
+          <a href="#carrinho" class="text-white hover:text-yellow-400 transition-all duration-300 ease-out
+                    focus:ring-2 focus:ring-yellow-500 focus:ring-offset-2 focus:ring-offset-zinc-900"
+                @click="fecharMenu">Carrinho</a>
+        </nav>
+      </div>
+
+      <!-- BANNER HERO -->
+      <section
+        id="inicio"
+        class="relative bg-zinc-900 rounded-xl shadow overflow-hidden mt-6 border border-yellow-600/20"
+      >
+        <div class="p-6 sm:p-8 md:p-12 relative z-10 text-center md:text-left">
+          <h2 class="text-3xl sm:text-4xl font-bold tracking-tight">BLACKACCESS</h2>
+          <div class="w-20 h-1 bg-yellow-400 rounded mt-2 mb-4 mx-auto md:mx-0"></div>
+
+          <p class="mt-3 text-gray-300 max-w-xl mx-auto md:mx-0">
+            Moda streetwear minimalista com foco em acessibilidade e estilo.
+          </p>
+
+          <button
+            class="mt-6 bg-yellow-500 text-black px-6 py-3 rounded-lg font-semibold hover:bg-yellow-400 transition-all duration-300 ease-out transform hover:scale-[1.03]
+                   focus:ring-2 focus:ring-yellow-500 focus:ring-offset-2 focus:ring-offset-black"
+            onclick="document.getElementById('produtos').scrollIntoView({behavior:'smooth'})"
+          >
+            Ver coleção
+          </button>
+        </div>
+
+        <div class="absolute inset-0 bg-gradient-to-b from-yellow-500/5 to-transparent"></div>
+
+        <div
+          class="absolute inset-0 opacity-20 bg-cover bg-center"
+          style="background-image: url('img/banner.svg')"
+        ></div>
+      </section>
+
+      <!-- PRODUTOS -->
+      <section id="produtos" class="bg-zinc-900 rounded-xl shadow p-6 mt-10 border border-yellow-600/20">
+        <h2 class="text-xl font-semibold mb-1 text-center md:text-left">Produtos</h2>
+        <div class="w-12 h-1 bg-yellow-400 rounded mb-4 mx-auto md:mx-0"></div>
+
+        <div class="grid gap-6 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3">
+          <article
+            v-for="p in produtos"
+            :key="p.id"
+            class="rounded-lg border border-yellow-600/20 p-4 bg-zinc-800 transition-all duration-300 ease-out transform hover:-translate-y-1 hover:shadow-xl"
+          >
+            <img
+              v-if="p.img"
+              :src="p.img"
+              :alt="'Imagem de ' + p.nome"
+              class="rounded mb-3 object-cover w-full h-64 bg-zinc-900"
+            />
+
+            <h3 class="font-semibold text-white">{{ p.nome }}</h3>
+            <p class="text-gray-400 text-sm">R$ {{ p.preco.toFixed(2) }}</p>
+
+            <button
+              class="mt-3 rounded-lg bg-white text-black hover:bg-yellow-400 px-4 py-2 font-medium transition-all duration-300 ease-out transform hover:scale-[1.03]
+                     focus:ring-2 focus:ring-yellow-500 focus:ring-offset-2 focus:ring-offset-zinc-800"
+              @click="adicionarCarrinho(p)"
+            >
+              Adicionar
+            </button>
+          </article>
+        </div>
+      </section>
+
+      <!-- CARRINHO -->
+      <section id="carrinho" class="bg-zinc-900 rounded-xl shadow p-6 mt-10 border border-yellow-600/20">
+        <h2 class="text-xl font-semibold">Carrinho</h2>
+        <div class="w-12 h-1 bg-yellow-400 rounded mb-4 mt-1"></div>
+
+        <p class="mt-2">Itens: <strong>{{ carrinho.length }}</strong></p>
+
+        <p class="mt-1 text-yellow-400 font-semibold text-lg">
+          Total: R$ {{ totalCarrinho }}
+        </p>
+
+        <ul class="mt-4 space-y-2">
+          <li
+            v-for="(c, idx) in carrinho"
+            :key="idx"
+            class="flex flex-col sm:flex-row sm:items-center sm:justify-between border-b border-yellow-600/20 pb-2 gap-2"
+          >
+            <span>{{ c.nome }} — R$ {{ c.preco.toFixed(2) }}</span>
+
+            <button
+              class="rounded-lg bg-red-600 hover:bg-red-700 text-white px-3 py-1 transition-all duration-300 ease-out transform hover:scale-[1.03]
+                     focus:ring-2 focus:ring-red-500 focus:ring-offset-2 focus:ring-offset-zinc-900"
+              @click="removerCarrinho(idx)"
+            >
+              Remover
+            </button>
+          </li>
+        </ul>
+      </section>
+
+    </main>
+
+    <!-- RODAPÉ -->
+    <footer class="max-w-5xl mx-auto px-4 py-8 text-sm text-gray-400 text-center">
+      © 2025 — BlackAccess
+    </footer>
+
+    <!-- Vue -->
+    <script src="https://unpkg.com/vue@3/dist/vue.global.prod.js"></script>
+    <script src="main.js"></script>
+
+    <!-- Service Worker -->
+    <script>
+      if ("serviceWorker" in navigator &&
+        !location.href.includes("127.0.0.1") &&
+        !location.href.includes("localhost")) {
+
+        navigator.serviceWorker.register("./sw.js")
+          .then(() => console.log("⚡ SW ativado (produção)"));
+      } else {
+        console.log("🟡 Service Worker DESATIVADO no modo de desenvolvimento");
+        navigator.serviceWorker.getRegistrations().then(regs => {
+          regs.forEach(reg => reg.unregister());
+        });
+      }
+    </script>
+  </body>
+</html>
