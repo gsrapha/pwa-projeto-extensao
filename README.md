@@ -54,9 +54,8 @@ O projeto foi desenvolvido como parte de um **trabalho acadêmico**, com código
 
 | Home | Produtos | Carrinho |
 |------|-----------|-----------|
-| ![Home](img/screenshot-home.jpg) | ![Produtos](img/screenshot-produtos.jpg) | ![Carrinho](img/screenshot-carrinho.jpg) |
+| ![Home](img/screenshot_3.png) | ![Produtos](img/screenshot_1.png) | ![Carrinho](img/screenshot_2.png) |
 
-*(adicione capturas reais do seu site na pasta `/img` para enriquecer o portfólio)*
 
 ---
 
