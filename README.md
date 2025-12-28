@@ -50,13 +50,6 @@ O projeto foi desenvolvido como parte de um **trabalho acadêmico**, com código
 🔗 **Site Online:**  
 👉 [https://gsrapha.github.io/pwa-projeto-extensao](https://gsrapha.github.io/pwa-projeto-extensao)
 
-📸 **Screenshots**
-
-| Home | Produtos | Carrinho |
-|------|-----------|-----------|
-| ![Home](img/screenshot_3.png) | ![Produtos](img/screenshot_1.png) | ![Carrinho](img/screenshot_2.png) |
-
-
 ---
 
 ## ⚙️ Como Executar Localmente
