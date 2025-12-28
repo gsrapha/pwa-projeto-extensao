@@ -1,6 +1,5 @@
 # 🖤 BlackAccess – E-commerce PWA Streetwear
 
-![banner](img/banner.svg)
 
 <p align="center">
   <img src="https://img.shields.io/badge/Vue-3.x-42b883?style=for-the-badge&logo=vue.js&logoColor=white"/>
