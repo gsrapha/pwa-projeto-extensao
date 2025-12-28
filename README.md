@@ -59,13 +59,9 @@ O projeto foi desenvolvido como parte de um **trabalho acadêmico**, com código
    git clone https://github.com/gsrapha/pwa-projeto-extensao.git
 Acesse a pasta
 
-bash
-Copiar código
 cd pwa-projeto-extensao
 Abra o projeto no VS Code
 
-bash
-Copiar código
 code .
 Execute com o Live Server
 Clique com o botão direito no index.html → Open with Live Server
@@ -89,8 +85,8 @@ Publicado no GitHub Pages	✅
 Código limpo e organizado	✅
 
 🧑‍💻 Autor
-👋 Gabriel Raphael
-Desenvolvedor Front-End | Estudante de Engenharia de Software
+👋 Raphael Gonçalves
+Desenvolvedor FullStack
 📍 Brasil
 💼 LinkedIn • 🌐 GitHub
 
@@ -113,17 +109,4 @@ Sinta-se livre para usar, modificar e compartilhar este projeto.
 
 💬 “Design limpo, código acessível e performance moderna — BlackAccess é um exemplo de PWA acadêmico com qualidade de produção.”
 
-yaml
-Copiar código
-
 ---
-
-### 🪶 Instruções:
-1. Crie o arquivo `README.md` dentro do seu repositório.  
-2. Cole o conteúdo acima.  
-3. No terminal:
-
-```bash
-git add README.md
-git commit -m "Adiciona README com badges e descrição profissional"
-git push
